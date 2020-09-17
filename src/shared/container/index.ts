@@ -3,21 +3,34 @@ import { container } from 'tsyringe';
 import '@modules/users/providers';
 import './providers';
 
-import IAppointmentsRepositoy from '@modules/appointments/repositories/IAppointmentsRepository';
+import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 import AppointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
 
-import IUsersRepositoy from '@modules/users/repositories/IUsersRepository';
+import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import UsersRepository from '@modules/users/infra/typeorm/repositories/UsersRepository';
 
-// import IUserTokensRepositoy from '@modules/users/repositories/IUserTokensRepositoy';
-// import UserTokensRepositoy from '@modules/users/infra/typeorm/repositories/UserTokensRepositoy';
+import IUserTokensRepository from '@modules/users/repositories/IUserTokensRepository';
+import UserTokensRepository from '@modules/users/infra/typeorm/repositories/UserTokensRepository';
 
-container.registerSingleton<IAppointmentsRepositoy>(
-    'AppointmentsRepository',
-    AppointmentsRepository,
+import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
+import NotificationsRepository from '@modules/notifications/infra/typeorm/repositories/NotificationsRepository';
+
+container.registerSingleton<IAppointmentsRepository>(
+  'AppointmentsRepository',
+  AppointmentsRepository,
 );
 
-container.registerSingleton<IUsersRepositoy>(
-    'UsersRepository',
-    UsersRepository,
+container.registerSingleton<IUsersRepository>(
+  'UsersRepository',
+  UsersRepository,
+);
+
+container.registerSingleton<IUserTokensRepository>(
+  'UserTokensRepository',
+  UserTokensRepository,
+);
+
+container.registerSingleton<INotificationsRepository>(
+  'NotificationsRepository',
+  NotificationsRepository,
 );
